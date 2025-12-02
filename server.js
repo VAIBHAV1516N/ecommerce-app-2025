@@ -38,6 +38,18 @@ app.get('/.*/', function (req, res) {
   res.sendFile(path.join(__dirname, './client/build/index.html'));
 });
 
+// GOOD:
+app.get(/.*/, (req, res) => {
+  res.sendFile(path.join(__dirname, './client/build/index.html'));
+});
+
+// OR GOOD:
+app.use((req, res, next) => {
+  if (req.path.startsWith('/api/')) return next();
+  res.sendFile(path.join(__dirname, './client/build/index.html'));
+});
+
+
 //port
 const PORT = process.env.PORT || 8080;
 
