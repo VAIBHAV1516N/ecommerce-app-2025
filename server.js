@@ -11,6 +11,7 @@ import { fileURLToPath } from 'url';
 
 //config
 dotenv.config();
+//service restart from render
 
 //database connection
 connectDB();
